@@ -1,0 +1,8 @@
+Migrating code forst to EF
+dotnet ef migrations add <migration_name> [-o <path_of_migration]
+
+Creating / updating the DB
+dotnet ef database update
+
+Removing the DB
+dotet ef database drop
