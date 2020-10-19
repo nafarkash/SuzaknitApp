@@ -26,7 +26,6 @@ import { LOCATION_INITIALIZED } from '@angular/common';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'en'
     }),
     HttpClientModule,
     FormsModule,
