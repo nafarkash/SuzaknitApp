@@ -1,0 +1,16 @@
+{
+  "landing": {
+    "file": "filing"
+  },
+  "nav": {
+    "file": "File",
+    "new": "new",
+    "project": "project",
+    "other": "other",
+    "open": "open",
+    "quit": "quit",
+    "edit": "edit",
+    "delete": "delete",
+    "refresh": "refresh"
+  }
+}
