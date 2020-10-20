@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ButtonModule } from 'primeng/button';
+import { MenubarModule } from 'primeng/menubar';
+import { ToolbarModule } from 'primeng/toolbar';
 import { LOCATION_INITIALIZED } from '@angular/common';
 
 @NgModule({
@@ -28,6 +31,9 @@ import { LOCATION_INITIALIZED } from '@angular/common';
       },
     }),
     HttpClientModule,
+    ButtonModule,
+    MenubarModule,
+    ToolbarModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

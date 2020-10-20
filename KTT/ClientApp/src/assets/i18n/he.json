@@ -1,16 +1,18 @@
 {
-  "landing": {
-    "file": "עברית"
-  },
   "nav": {
-    "file": "קובץ",
-    "new": "חדש",
-    "project": "פרויקט",
-    "other": "אחר",
-    "open": "פתח",
-    "quit": "יציאה",
-    "edit": "עריכה",
-    "delete": "מחיקה",
-    "refresh": "ריענון"
+    "log_in": "התחבר",
+    "log_out": "התנתק",
+    "username": "שם משתמש",
+    "password": "סיסמא",
+    "choose_language": "בחר שפה",
+    "choose_theme": "בחר עיצוב",
+    "lang": {
+      "hebrew": "HE",
+      "english": "EN"
+    },
+    "theme": {
+      "dark_green": "ירוק כהה",
+      "light_blue": "כחול בהיר"
+    }
   }
 }

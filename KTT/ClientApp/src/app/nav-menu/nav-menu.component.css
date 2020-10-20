@@ -1,18 +1,30 @@
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+.login-container {
+  display: flex;
+  align-items: center;
+}
+/*RTL overrides*/
+:host ::ng-deep .rtl-menu > .p-menubar-end {
+  margin-left: unset;
+  margin-inline-start: auto;
 }
 
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+:host ::ng-deep .p-menuitem-icon {
+  margin-right: unset;
+  margin-inline-end: 0.5rem;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+:host ::ng-deep .p-submenu-icon {
+  margin-left: unset;
+  margin-inline-start: 0.5rem;
+}
+
+:host ::ng-deep .p-button-icon-left {
+  margin-right: unset;
+  margin-inline-end: 0.5rem;
+}
+
+:host ::ng-deep .p-float-label > label {
+  top: 20%;
+  margin-top: unset;
+  color: lightslategray;
 }
