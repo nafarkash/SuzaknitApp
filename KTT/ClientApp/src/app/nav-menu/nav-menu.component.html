@@ -1,15 +1,15 @@
 <p-menubar [model]="items" styleClass="rtl-menu">
   <div class="login-container">
     <span class="p-float-label p-mx-2">
-      <input type="text" id="username" pInputText [(ngModel)]="userName">
+      <input type="text" id="username" class="p-inputtext-sm" pInputText [(ngModel)]="userName">
       <label for="username">{{'nav.username' | translate}}</label>
     </span>
     <span class="p-float-label p-mx-2">
-      <input type="password" id="password" pInputText [(ngModel)]="password">
+      <input type="password" id="password" class="p-inputtext-sm" pInputText [(ngModel)]="password">
       <label for="password">{{'nav.password' | translate}}</label>
     </span>
     <!--<input type="text" class="p-mx-2" pInputText placeholder="Search">-->
-    <button pButton label="{{'nav.log_in' | translate}}" icon="pi pi-power-off" class="p-button-sm p-button-icon-right"></button>
+    <button pButton label="{{'nav.log_in' | translate}}" icon="pi pi-power-off" class="p-button-sm"></button>
   </div>
 </p-menubar>
 

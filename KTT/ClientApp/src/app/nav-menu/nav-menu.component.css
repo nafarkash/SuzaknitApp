@@ -26,5 +26,4 @@
 :host ::ng-deep .p-float-label > label {
   top: 20%;
   margin-top: unset;
-  color: lightslategray;
 }

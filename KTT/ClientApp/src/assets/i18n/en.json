@@ -11,8 +11,19 @@
       "english": "EN"
     },
     "theme": {
-      "dark_green": "Dark Green",
-      "light_blue": "Light Blue"
+      "aryaBlue": "Arya Blue",
+      "aryaGreen": "Arya Green",
+      "aryaOrange": "Arya Orange",
+      "aryaPurple": "Arya Purple",
+      "bootstrapDarkBlue": "BS Dark Blue",
+      "bootstrapDarkPurple": "BS Dark Purple",
+      "bootstrapLightBlue": "BS Light Blue",
+      "bootstrapLightPurple": "BS Light Purple",
+      "fluentLight": "Fluent Light",
+      "lunaAmber": "Luna Amber",
+      "lunaBlue": "Luna Blue",
+      "lunaGreen": "Luna Green",
+      "lunaPink": "Luna Pink"
     }
   }
 }

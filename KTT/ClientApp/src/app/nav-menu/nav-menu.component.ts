@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemesService, Themes } from '../services/themes.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -12,7 +13,7 @@ export class NavMenuComponent {
   userName: string;
   password: string;
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private themeService: ThemesService) {
     this.translate.onLangChange.subscribe(() => this.buildNavMenu());
   }
 
@@ -32,11 +33,15 @@ export class NavMenuComponent {
       {
         label: this.translate.instant('nav.choose_theme'),
         icon: 'pi pi-fw pi-pencil',
-        items: [
-          { label: this.translate.instant('nav.theme.dark_green'), icon: 'pi pi-fw pi-trash' },
-          { label: this.translate.instant('nav.theme.light_blue'), icon: 'pi pi-fw pi-refresh' }
-        ]
+        items: this.createThemes()
       }
     ];
+  }
+
+  createThemes(): MenuItem[] {
+    return Object.keys(Themes).map(key => <MenuItem>{
+      label: this.translate.instant(`nav.theme.${key}`),
+      command: () => this.themeService.updateTheme(Themes[key as keyof typeof Themes]),
+    })
   }
 }

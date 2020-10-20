@@ -12,6 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { ToolbarModule } from 'primeng/toolbar';
+import { InputTextModule } from 'primeng/inputtext';
 import { LOCATION_INITIALIZED } from '@angular/common';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { LOCATION_INITIALIZED } from '@angular/common';
     ButtonModule,
     MenubarModule,
     ToolbarModule,
+    InputTextModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
