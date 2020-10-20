@@ -4,6 +4,12 @@
     "log_out": "Logout",
     "username": "UserName",
     "password": "Password",
+    "crochet_gallery": "Crochet gallery",
+    "painting_gallery": "Painting gallery",
+    "instruction": "Instructions",
+    "order": "Order",
+    "contact": "Contact",
+    "settings": "Settings",
     "choose_language": "Language",
     "choose_theme": "Theme",
     "lang": {

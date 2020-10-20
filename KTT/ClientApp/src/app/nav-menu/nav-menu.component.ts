@@ -24,16 +24,41 @@ export class NavMenuComponent {
   buildNavMenu() {
     this.items = [
       {
-        label: this.translate.instant('nav.choose_language'),
-        items: [
-          { label: this.translate.instant('nav.lang.hebrew'), command: () => this.translate.use('he') },
-          { label: this.translate.instant('nav.lang.english'), command: () => this.translate.use('en') }
-        ]
+        label: this.translate.instant('nav.crochet_gallery'),
+        routerLink: 'fetch-data'
       },
       {
-        label: this.translate.instant('nav.choose_theme'),
-        icon: 'pi pi-fw pi-pencil',
-        items: this.createThemes()
+        label: this.translate.instant('nav.painting_gallery'),
+        routerLink: 'fetch-data'
+      },
+      {
+        label: this.translate.instant('nav.instruction'),
+        routerLink: 'fetch-data'
+      },
+      {
+        label: this.translate.instant('nav.order'),
+        routerLink: 'fetch-data'
+      },
+      {
+        label: this.translate.instant('nav.contact'),
+        routerLink: 'fetch-data'
+      },
+      {
+        label: this.translate.instant('nav.settings'),
+        items: [
+          {
+            label: this.translate.instant('nav.choose_language'),
+            items: [
+              { label: this.translate.instant('nav.lang.hebrew'), command: () => this.translate.use('he') },
+              { label: this.translate.instant('nav.lang.english'), command: () => this.translate.use('en') }
+            ]
+          },
+          {
+            label: this.translate.instant('nav.choose_theme'),
+            icon: 'pi pi-fw pi-pencil',
+            items: this.createThemes()
+          }
+        ]
       }
     ];
   }
