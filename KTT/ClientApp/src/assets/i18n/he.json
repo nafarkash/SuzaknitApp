@@ -5,13 +5,19 @@
     "username": "שם משתמש",
     "password": "סיסמא",
     "crochet_gallery": "גלריית סרוגים",
-    "painting_gallery": "גלריית ציורים",
+    "drawing_gallery": "גלריית ציורים",
     "instruction": "הדרכות",
     "order": "הזמנות",
     "contact": "צרו קשר",
     "settings": "הגדרות",
     "choose_language": "בחר שפה",
     "choose_theme": "בחר עיצוב",
+    "crochet": {
+      "cactus": "קקטוסים",
+      "pupets": "בובות",
+      "orchids": "סחלבים",
+      "public_work": "מיצגים בטבע"
+    },
     "lang": {
       "hebrew": "HE",
       "english": "EN"

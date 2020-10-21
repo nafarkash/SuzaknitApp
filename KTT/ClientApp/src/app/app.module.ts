@@ -13,14 +13,19 @@ import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
+import { GalleriaModule } from 'primeng/galleria';
 import { LOCATION_INITIALIZED } from '@angular/common';
+import { GalleryViewerComponent } from './gallery-viewer/gallery-viewer.component';
+import { AdminToolsComponent } from './admin-tools/admin-tools.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    GalleryViewerComponent,
+    AdminToolsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,10 +41,12 @@ import { LOCATION_INITIALIZED } from '@angular/common';
     MenubarModule,
     ToolbarModule,
     InputTextModule,
+    GalleriaModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'crochet', component: GalleryViewerComponent }
     ])
   ],
   providers: [

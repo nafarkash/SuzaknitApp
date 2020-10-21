@@ -25,11 +25,16 @@ export class NavMenuComponent {
     this.items = [
       {
         label: this.translate.instant('nav.crochet_gallery'),
-        routerLink: 'fetch-data'
+        items: [
+          { label: this.translate.instant('nav.crochet.cactus') },
+          { label: this.translate.instant('nav.crochet.pupets') },
+          { label: this.translate.instant('nav.crochet.orchids') },
+          { label: this.translate.instant('nav.crochet.public_work') },
+        ]
       },
       {
-        label: this.translate.instant('nav.painting_gallery'),
-        routerLink: 'fetch-data'
+        label: this.translate.instant('nav.drawing_gallery'),
+        routerLink: 'crochet'
       },
       {
         label: this.translate.instant('nav.instruction'),
@@ -37,11 +42,9 @@ export class NavMenuComponent {
       },
       {
         label: this.translate.instant('nav.order'),
-        routerLink: 'fetch-data'
       },
       {
         label: this.translate.instant('nav.contact'),
-        routerLink: 'fetch-data'
       },
       {
         label: this.translate.instant('nav.settings'),

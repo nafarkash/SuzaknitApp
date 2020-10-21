@@ -5,13 +5,19 @@
     "username": "UserName",
     "password": "Password",
     "crochet_gallery": "Crochet gallery",
-    "painting_gallery": "Painting gallery",
+    "drawing_gallery": "Drawing gallery",
     "instruction": "Instructions",
     "order": "Order",
     "contact": "Contact",
     "settings": "Settings",
     "choose_language": "Language",
     "choose_theme": "Theme",
+    "crochet": {
+      "cactus": "Cactus",
+      "pupets": "Pupets",
+      "orchids": "Orchids",
+      "public_work": "Monuments"
+    },
     "lang": {
       "hebrew": "HE",
       "english": "EN"
