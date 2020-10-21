@@ -2,6 +2,12 @@
   display: flex;
   align-items: center;
 }
+
+/*Set menu active link depending on applyed stylesheet*/
+:host ::ng-deep .p-menuitem-link-active .p-menuitem-text {
+  color: var(--primary-color) !important;
+}
+
 /*RTL overrides*/
 :host ::ng-deep .rtl-menu > .p-menubar-end {
   margin-left: unset;
