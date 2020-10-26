@@ -1,7 +1,7 @@
-﻿using KTT.Data;
-using KTT.DTO;
-using KTT.Entities;
-using KTT.Interfaces;
+﻿using Suzaknit.Data;
+using Suzaknit.DTO;
+using Suzaknit.Entities;
+using Suzaknit.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KTT.Controllers
+namespace Suzaknit.Controllers
 {
     public class AccountController : BaseController
     {

@@ -1,7 +1,7 @@
-﻿using KTT.Data;
-using KTT.Entities;
-using KTT.Enums;
-using KTT.Extensions;
+﻿using Suzaknit.Data;
+using Suzaknit.Entities;
+using Suzaknit.Enums;
+using Suzaknit.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KTT.Controllers
+namespace Suzaknit.Controllers
 {
     public class ImageController : BaseController
     {

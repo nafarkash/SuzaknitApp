@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KTT.Data.Migrations
+namespace Suzaknit.Data.Migrations
 {
     public partial class IntialMigration : Migration
     {

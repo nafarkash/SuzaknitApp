@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KTT.DTO
+namespace Suzaknit.DTO
 {
     public class RegisterDto
     {

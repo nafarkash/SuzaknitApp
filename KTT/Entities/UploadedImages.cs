@@ -1,6 +1,6 @@
-﻿using KTT.Enums;
+﻿using Suzaknit.Enums;
 
-namespace KTT.Entities
+namespace Suzaknit.Entities
 {
     public class UploadedImages
     {

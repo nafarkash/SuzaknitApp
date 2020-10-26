@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace KTT.Extensions
+namespace Suzaknit.Extensions
 {
     public static class EnumExtensions
     {

@@ -1,11 +1,11 @@
-﻿using KTT.Data;
-using KTT.Interfaces;
-using KTT.Services;
+﻿using Suzaknit.Data;
+using Suzaknit.Interfaces;
+using Suzaknit.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KTT.Extensions
+namespace Suzaknit.Extensions
 {
     public static class ApplicationServiceExtensions
     {

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "KTT": {
+    "Suzaknit": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "KTT:build"
+            "browserTarget": "Suzaknit:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "KTT:build:production"
+              "browserTarget": "Suzaknit:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "KTT:build"
+            "browserTarget": "Suzaknit:build"
           }
         },
         "test": {
@@ -118,7 +118,7 @@
         }
       }
     },
-    "KTT-e2e": {
+    "Suzaknit-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -126,7 +126,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "KTT:serve"
+            "devServerTarget": "Suzaknit:serve"
           }
         },
         "lint": {
@@ -139,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "KTT"
+  "defaultProject": "Suzaknit"
 }

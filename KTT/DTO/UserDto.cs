@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KTT.DTO
+namespace Suzaknit.DTO
 {
     public class UserDto
     {

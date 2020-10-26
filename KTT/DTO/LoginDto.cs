@@ -1,4 +1,4 @@
-﻿namespace KTT.DTO
+﻿namespace Suzaknit.DTO
 {
     public class LoginDto
     {

@@ -1,6 +1,6 @@
-﻿using KTT.Entities;
+﻿using Suzaknit.Entities;
 
-namespace KTT.Interfaces
+namespace Suzaknit.Interfaces
 {
     public interface ITokenService
     {

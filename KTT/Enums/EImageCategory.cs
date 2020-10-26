@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace KTT.Enums
+namespace Suzaknit.Enums
 {
     public enum EImageCategory
     {

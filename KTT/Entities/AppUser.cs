@@ -1,4 +1,4 @@
-﻿namespace KTT.Entities
+﻿namespace Suzaknit.Entities
 {
     public class AppUser
     {

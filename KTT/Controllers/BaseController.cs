@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace KTT.Controllers
+namespace Suzaknit.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace KTT.Data.Migrations
+namespace Suzaknit.Data.Migrations
 {
     public partial class updated_UploadedImages : Migration
     {

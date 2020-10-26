@@ -1,7 +1,7 @@
-﻿using KTT.Entities;
+﻿using Suzaknit.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace KTT.Data
+namespace Suzaknit.Data
 {
     public class DataContext : DbContext
     {
