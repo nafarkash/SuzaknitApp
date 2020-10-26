@@ -1,4 +1,4 @@
-Migrating code forst to EF
+Migrating code first to EF
 dotnet ef migrations add <migration_name> [-o <path_of_migration]
 
 Creating / updating the DB
