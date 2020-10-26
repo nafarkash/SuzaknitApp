@@ -1,1 +1,26 @@
-<p>admin-tools works!</p>
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <p-fileUpload #fileInput name="file" multiple="multiple" [showUploadButton]="false" [showCancelButton]="false"
+                   accept="image/*,.csv,.xml,.doc,.docx,.pdf">
+      <ng-template pTemplate="content">
+        <div class="ui-fileupload-row" *ngFor="let file of attachments; let i = index;">
+          <div>
+            <img [src]="file.objectURL" *ngIf="uploadService.isImage(file)" />
+          </div>
+          <div class="uploaded-file" (click)="uploadService.downloadFile(attachments, i)">
+            {{file.uploadname}}
+          </div>
+          <div>
+            <button type="button" class="btn-xs btn-danger confirm-btn"
+                    (click)="deleteFile(attachments, i)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </p-fileUpload>
+    <button type="submit" class="btn-xs confirm-btn">
+      Submit
+    </button>
+  </div>
+</form>

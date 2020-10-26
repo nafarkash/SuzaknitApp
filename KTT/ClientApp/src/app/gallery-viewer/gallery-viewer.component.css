@@ -1,0 +1,12 @@
+img {
+    height: 100%;
+    max-height: 600px;
+}
+
+/*Change expand arrow to the other direction*/
+[dir=rtl] :host ::ng-deep .pi-chevron-right:before {
+  content: '\e900';
+}
+[dir=rtl] :host ::ng-deep .pi-chevron-left:before {
+  content: '\e901';
+}

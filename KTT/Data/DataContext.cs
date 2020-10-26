@@ -9,5 +9,6 @@ namespace KTT.Data
         {
         }
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<UploadedImages> Images { get; set; }
     }
 }

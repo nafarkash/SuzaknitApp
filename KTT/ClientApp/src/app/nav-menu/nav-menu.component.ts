@@ -45,6 +45,7 @@ export class NavMenuComponent {
       },
       {
         label: this.translate.instant('nav.contact'),
+        routerLink: 'admin'
       },
       {
         label: this.translate.instant('nav.settings'),

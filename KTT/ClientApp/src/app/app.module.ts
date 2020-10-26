@@ -14,9 +14,11 @@ import { MenubarModule } from 'primeng/menubar';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { GalleriaModule } from 'primeng/galleria';
+import { FileUploadModule } from 'primeng/fileupload';
 import { LOCATION_INITIALIZED } from '@angular/common';
 import { GalleryViewerComponent } from './gallery-viewer/gallery-viewer.component';
 import { AdminToolsComponent } from './admin-tools/admin-tools.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
     HomeComponent,
     FetchDataComponent,
     GalleryViewerComponent,
-    AdminToolsComponent
+    AdminToolsComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,11 +45,13 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
     ToolbarModule,
     InputTextModule,
     GalleriaModule,
+    FileUploadModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'crochet', component: GalleryViewerComponent }
+      { path: 'crochet', component: GalleryViewerComponent },
+      { path: 'admin', component: AdminToolsComponent }
     ])
   ],
   providers: [

@@ -38,9 +38,11 @@
 }
 
 /*Hierarchy menus open to the logical direction*/
-:host ::ng-deep .p-submenu-list .p-submenu-list {
-  left: unset !important;
-  margin-inline-start: 100%;
+@media screen and (min-width: 961px) {
+  :host ::ng-deep .p-submenu-list .p-submenu-list {
+    left: unset !important;
+    margin-inline-start: 100%;
+  }
 }
 
 /*Change expand arrow to the other direction*/
