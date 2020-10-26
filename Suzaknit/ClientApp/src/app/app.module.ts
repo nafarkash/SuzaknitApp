@@ -18,7 +18,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { LOCATION_INITIALIZED } from '@angular/common';
 import { GalleryViewerComponent } from './gallery-viewer/gallery-viewer.component';
 import { AdminToolsComponent } from './admin-tools/admin-tools.component';
-import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
     HomeComponent,
     FetchDataComponent,
     GalleryViewerComponent,
-    AdminToolsComponent,
-    FileSelectDirective
+    AdminToolsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
