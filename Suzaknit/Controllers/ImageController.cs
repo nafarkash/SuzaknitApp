@@ -37,10 +37,11 @@ namespace Suzaknit.Controllers
         }
 
         [HttpPost("upload")]
-        public async Task<ActionResult> Upload([Required] IFormCollection data)
+        public async Task<ActionResult<IEnumerable<UploadedImages>>> Upload([Required] IFormCollection data)
         {
             try
             {
+                IList<UploadedImages> uploadedImages = new List<UploadedImages>();
                 if (data.Files == null) return BadRequest("No Uploaded file in the upload request");
                 StringValues category;
                 data.TryGetValue("category", out category);
@@ -57,8 +58,7 @@ namespace Suzaknit.Controllers
 
                     string filePath = Path.Combine(categoryPath, uniqueFileName);
 
-                    // Store uniqueFileName with the category into the DB for later retrieval
-                    _context.Images.Add(new UploadedImages
+                    uploadedImages.Add(new UploadedImages
                     {
                         Name = uniqueFileName,
                         Category = (EImageCategory)Enum.Parse(typeof(EImageCategory), category.First(), true),
@@ -68,9 +68,9 @@ namespace Suzaknit.Controllers
                     // DB successfully updated, can save image to file system
                     await file.CopyToAsync(new FileStream(filePath, FileMode.Create));
                 }
-
+                await _context.Images.AddRangeAsync(uploadedImages);
                 await _context.SaveChangesAsync();
-                return Ok();
+                return CreatedAtAction(nameof(GetCategory), uploadedImages);
             }
             catch (Exception ex)
             {

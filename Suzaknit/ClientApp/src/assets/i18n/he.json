@@ -37,5 +37,14 @@
       "lunaGreen": "Luna Green",
       "lunaPink": "Luna Pink"
     }
+  },
+  "upload": {
+    "choose": "בחר",
+    "upload": "העלאה",
+    "cancel": "ביטול",
+    "invalidFileTypeSummary": "{0}: קובץ אסור להעלאה, ",
+    "invalidFileTypeDetailed": "ניתן להעלות קבצים מסוג: {0}.",
+    "invalidFileSizeSummary": "{0}: גודל קובץ לא תקין, ",
+    "invalidFileSizeDetailed": "מקסימום הניתן הוא {0}."
   }
 }

@@ -1,4 +1,4 @@
-<p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '800px'}" [numVisible]="7">
+<!--<p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '800px'}" [numVisible]="7">
   <ng-template pTemplate="item" let-item>
     <img [src]='item.gallery + "/" + item.category + "/" + item.name' style="width: 100%; display: block;" />
   </ng-template>
@@ -7,11 +7,13 @@
       <img [src]='item.gallery + "/" + item.category + "/" + item.name' style="display: block; height: 40px;" />
     </div>
   </ng-template>
-</p-galleria>
-
-
-<!--<p-galleria [value]="images">
-  <ng-template pTemplate="item" let-item>
-    <img [src]='item.gallery + "/" + item.category + "/" + item.name' />
-  </ng-template>
 </p-galleria>-->
+
+<app-grid-gallery [images]="{{this.photosService.getByCategory('dfdf') | async}}"
+                  cols.xs="1"
+                  cols.sm="2"
+                  cols.md="3"
+                  cols.lg="4"
+                  cols.xl="6">
+</app-grid-gallery>
+

@@ -10,10 +10,10 @@ export class UploadService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   //upload file method
-  uploadFile(file) {
+  uploadFiles(files: File[]) {
     const formData: FormData = new FormData();
     formData.append('category', EImageCategory.Cactus.toString());
-    formData.append('file', file, file.name);
+    files.forEach(file => formData.append('file', file, file.name));
     //append any other key here if required
     return this.http.post(this.baseUrl + 'api/image/upload', formData);
   }

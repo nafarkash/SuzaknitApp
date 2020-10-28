@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, Injector, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,6 +19,9 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { LOCATION_INITIALIZED } from '@angular/common';
 import { GalleryViewerComponent } from './gallery-viewer/gallery-viewer.component';
 import { AdminToolsComponent } from './admin-tools/admin-tools.component';
+import { GridGalleryComponent } from './gallery-viewer/grid-gallery/grid-gallery.component';
+import { GridGalleryItemComponent } from './gallery-viewer/grid-gallery/grid-gallery-item/grid-gallery-item.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
     HomeComponent,
     FetchDataComponent,
     GalleryViewerComponent,
-    AdminToolsComponent
+    AdminToolsComponent,
+    GridGalleryComponent,
+    GridGalleryItemComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +44,7 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
       },
     }),
     HttpClientModule,
+    BrowserAnimationsModule,
     ButtonModule,
     MenubarModule,
     ToolbarModule,
@@ -45,6 +52,7 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
     GalleriaModule,
     FileUploadModule,
     FormsModule,
+    MatGridListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fetch-data', component: FetchDataComponent },

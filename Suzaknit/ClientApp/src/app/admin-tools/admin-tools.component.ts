@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
-import { FileUpload } from 'primeng/fileupload';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { UploadService } from '../services/upload.service';
+import { UploadedImages } from '../gallery-viewer/gallery-viewer.component';
+import { FileUpload } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-admin-tools',
@@ -9,8 +10,7 @@ import { UploadService } from '../services/upload.service';
   styleUrls: ['./admin-tools.component.css']
 })
 export class AdminToolsComponent implements OnInit {
-  attachments: any[];
-  @ViewChild('fileInput') fileInput: FileUpload; 
+  attachments: any[] = [];
 
   constructor(private uploadService: UploadService) {
   }
@@ -18,37 +18,31 @@ export class AdminToolsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(): void {
-    const promiseList = [];
-    const ObservableList = [];
-    this.fileInput.files.forEach(file => {
-      promiseList.push(this.uploadService.uploadFile(file));
-    });
-    //call delete function here in case of delete
-    //this.uploadService.deleteAttachment(this.deletedattachments);
-    if (promiseList.length) {
-      forkJoin(promiseList).subscribe(
-        files => {
-          const date = new Date();
-          files.forEach(file => {
-            this.attachments.push({
-              originalname: file['originalname'],
-              uploadname: file['uploadname'],
-              uploadtime: date.getDate()
-            });
-          });
-          //Do form save here after uploading
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
+  onUpload = (event, fileInput: FileUpload): void => {
+    this.uploadService.uploadFiles(event.files).subscribe((files: UploadedImages[]) => {
+      const date = new Date();
+      files.forEach(file => {
+        this.attachments.push({
+          name: file['name'],
+          category: file['category'],
+          uploadtime: date.getDate()
+        });
+      })
+
+      fileInput.clear();
+
+      // Message for successful upload
+
+    },
+      err => {
+        console.log(err);
+      }
+    );
   }
+
   //Maintain delete list
   deleteFile(list, index) {
     //this.deletedattachments.push(this.attachments[index]);
     this.attachments.splice(index, 1);
   }
-
 }

@@ -37,5 +37,14 @@
       "lunaGreen": "Luna Green",
       "lunaPink": "Luna Pink"
     }
+  },
+  "upload": {
+    "choose": "Choose",
+    "upload": "Upload",
+    "cancel": "Cancel",
+    "invalidFileTypeSummary": "{0}: Invalid file type, ",
+    "invalidFileTypeDetailed": "allowed file types: {0}.",
+    "invalidFileSizeSummary": "{0}: Invalid file size, ",
+    "invalidFileSizeDetailed": "maximum upload size is {0}."
   }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Image } from '../models/image'
+import { PhotosService } from '../services/photos.service';
 
 @Component({
   selector: 'app-gallery-viewer',
@@ -10,36 +12,27 @@ export class GalleryViewerComponent implements OnInit {
   images: any;
   public EImageCategory: EImageCategory
 
-  responsiveOptions: any[] = [
-    {
-      breakpoint: '1024px',
-      numVisible: 5
-    },
-    {
-      breakpoint: '960px',
-      numVisible: 4
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 3
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1
-    }
-  ];
-
-
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    console.log(this.images);
-    http.get<UploadedImages>(baseUrl + 'api/image/cactus').subscribe(result => {
-      console.log('result: ' + result);
-      this.images = result;
-    }, error => console.error(error));
-    console.log('images: ' + this.images);
+  constructor(public photosService: PhotosService) {
+    //this.images = this.generateImagesList();
   }
 
   ngOnInit() {
+  }
+
+  private generateRandomImage(): Image {
+    const width = 600;
+    const height = (Math.random() * (1000 - 400) + 400).toFixed();
+    return { gallery: `https://picsum.photos/${width}/${height}/?random` };
+  }
+
+  private generateImagesList(): Image[] {
+    const images: Image[] = [];
+    for (let i = 0; i < 40; i++) {
+      const image = this.generateRandomImage();
+      //image.alt = `#${i}`;
+      images.push(image);
+    }
+    return images;
   }
 
 }
