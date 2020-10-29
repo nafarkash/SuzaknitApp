@@ -7,4 +7,7 @@
               invalidFileTypeMessageDetail="{{'upload.invalidFileTypeDetailed' | translate}}"
               invalidFileSizeMessageSummary="{{'upload.invalidFileSizeSummary' | translate}}"
               invalidFileSizeMessageDetail="{{'upload.invalidFileSizeDetailed' | translate}}">
+  <ng-template pTemplate="toolbar">
+    <p-dropdown [options]="galleryCategories" [(ngModel)]="selectedCategory" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"></p-dropdown>
+  </ng-template>
 </p-fileUpload>

@@ -22,6 +22,7 @@ import { AdminToolsComponent } from './admin-tools/admin-tools.component';
 import { GridGalleryComponent } from './gallery-viewer/grid-gallery/grid-gallery.component';
 import { GridGalleryItemComponent } from './gallery-viewer/grid-gallery/grid-gallery-item/grid-gallery-item.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     ButtonModule,
     MenubarModule,
     ToolbarModule,
+    DropdownModule,
     InputTextModule,
     GalleriaModule,
     FileUploadModule,

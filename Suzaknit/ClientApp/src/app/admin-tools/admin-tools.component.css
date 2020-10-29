@@ -1,15 +1,16 @@
-/**/
-:host ::ng-deep .p-fileupload-row > div:last-child {
-  text-align: end;
-}
-
 /*Space in buttons*/
 :host ::ng-deep .p-button-icon-left {
   margin-right: unset;
   margin-inline-end: 0.5rem;
 }
 
-/*Space in message message detail*/
+/*Space between buttons*/
+[dir=rtl] :host ::ng-deep .p-button {
+  margin-right: unset !important;
+  margin-inline-end: 0.5rem;
+}
+
+/*Space in message detail*/
 :host ::ng-deep .p-message-detail {
   margin-left: unset;
   margin-inline-start: 0.5rem;
@@ -25,4 +26,20 @@
 :host ::ng-deep .p-message-close.p-link {
   margin-left: unset;
   margin-inline-start: auto;
+}
+
+/*Stick row X button to the end*/
+:host ::ng-deep .p-fileupload-row > div:last-child {
+  text-align: end;
+}
+
+/*Dropdown begin in relevant direction*/
+:host ::ng-deep .p-dropdown-panel {
+  left: unset !important;
+  inset-inline-start: 0px;
+}
+
+/*Increase dropdown height a bit*/
+:host ::ng-deep .p-dropdown-items-wrapper {
+  max-height: 210px !important;
 }

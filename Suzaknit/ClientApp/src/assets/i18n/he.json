@@ -46,5 +46,12 @@
     "invalidFileTypeDetailed": "ניתן להעלות קבצים מסוג: {0}.",
     "invalidFileSizeSummary": "{0}: גודל קובץ לא תקין, ",
     "invalidFileSizeDetailed": "מקסימום הניתן הוא {0}."
+  },
+  "galleryCategories": {
+    "cactus": "קקטוסים",
+    "pupets": "בובות",
+    "orchids": "סחלבים",
+    "public_work": "מיצגים",
+    "drawings": "ציורים"
   }
 }

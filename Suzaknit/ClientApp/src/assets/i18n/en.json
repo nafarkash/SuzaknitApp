@@ -46,5 +46,12 @@
     "invalidFileTypeDetailed": "allowed file types: {0}.",
     "invalidFileSizeSummary": "{0}: Invalid file size, ",
     "invalidFileSizeDetailed": "maximum upload size is {0}."
+  },
+  "galleryCategories": {
+    "cactus": "Cactus",
+    "pupets": "Pupets",
+    "orchids": "Orchids",
+    "public_work": "Monuments",
+    "drawings": "Drawings"
   }
 }
