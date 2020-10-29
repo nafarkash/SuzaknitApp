@@ -34,7 +34,7 @@ export class NavMenuComponent {
       },
       {
         label: this.translate.instant('nav.drawing_gallery'),
-        routerLink: 'gallery/paitings'
+        routerLink: 'gallery/drawings'
       },
       {
         label: this.translate.instant('nav.instruction'),

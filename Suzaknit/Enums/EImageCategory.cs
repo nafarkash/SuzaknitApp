@@ -12,7 +12,7 @@ namespace Suzaknit.Enums
         Orchids ,
         [Description("monuments")]
         Monuments,
-        [Description("paitings")]
-        Paitings
+        [Description("drawings")]
+        Drawings
     }
 }

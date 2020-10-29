@@ -3,5 +3,5 @@ export enum EImageCategory {
   pupets,
   orchids,
   monuments,
-  paitings
+  drawings
 }
