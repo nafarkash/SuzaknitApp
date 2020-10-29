@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { EImageCategory } from '../gallery-viewer/gallery-viewer.component';
+import { EImageCategory } from '../models/image-category';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,9 @@ export class UploadService {
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   //upload file method
-  uploadFiles(files: File[]) {
+  uploadFiles(files: File[], category: EImageCategory) {
     const formData: FormData = new FormData();
-    formData.append('category', EImageCategory.Cactus.toString());
+    formData.append('category', category.toString());
     files.forEach(file => formData.append('file', file, file.name));
     //append any other key here if required
     return this.http.post(this.baseUrl + 'api/image/upload', formData);

@@ -56,7 +56,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'crochet', component: GalleryViewerComponent },
+      { path: 'gallery/:category', component: GalleryViewerComponent },
       { path: 'admin', component: AdminToolsComponent }
     ])
   ],

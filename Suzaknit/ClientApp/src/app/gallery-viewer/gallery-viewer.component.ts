@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Image } from '../models/image'
 import { PhotosService } from '../services/photos.service';
+import { EImageCategory } from '../models/image-category';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gallery-viewer',
@@ -9,45 +10,29 @@ import { PhotosService } from '../services/photos.service';
   styleUrls: ['./gallery-viewer.component.css']
 })
 export class GalleryViewerComponent implements OnInit {
-  images: any;
-  public EImageCategory: EImageCategory
+  images: Image[];
+  displayCustom: boolean;
+  activeIndex: number = 0;
 
-  constructor(public photosService: PhotosService) {
-    //this.images = this.generateImagesList();
+  constructor(private photosService: PhotosService, private readonly route: ActivatedRoute) {
+
   }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const galleryParamString: string = params.get("category");
+      const galleryParam: EImageCategory = EImageCategory[galleryParamString];
+      if (galleryParam !== null && galleryParam !== undefined) {
+        this.photosService.getByCategory(galleryParam).subscribe(images => {
+          this.images = images
+        });
+      }
+    });
+
   }
 
-  private generateRandomImage(): Image {
-    const width = 600;
-    const height = (Math.random() * (1000 - 400) + 400).toFixed();
-    return { gallery: `https://picsum.photos/${width}/${height}/?random` };
+  imageClick(index: number) {
+    this.activeIndex = index;
+    this.displayCustom = true;
   }
-
-  private generateImagesList(): Image[] {
-    const images: Image[] = [];
-    for (let i = 0; i < 40; i++) {
-      const image = this.generateRandomImage();
-      //image.alt = `#${i}`;
-      images.push(image);
-    }
-    return images;
-  }
-
-}
-
-export interface UploadedImages {
-  id: number;
-  gallery: string;
-  category: string;
-  name: string;
-}
-
-export enum EImageCategory {
-  Cactus = 0,
-  Pupets,
-  Orchids,
-  Monuments,
-  Paitings
 }

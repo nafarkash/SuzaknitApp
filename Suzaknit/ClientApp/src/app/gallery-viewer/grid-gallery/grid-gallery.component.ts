@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { Image } from '../../models/image'
@@ -17,8 +17,8 @@ export class GridGalleryComponent implements OnInit, OnDestroy {
   @Input('cols.lg') cols_lg: number = 4;
   @Input('cols.xl') cols_xl: number = 6;
   @Input() rowHeight: number = 1;
-  @Input() gutterSize: number = 10;
-  columns: number[];
+  @Input() gutterSize: number = 1;
+  @Output() imageClick: EventEmitter<number> = new EventEmitter<number>();
   mediaWatcher: Subscription;
 
   constructor(private media: MediaObserver) {
@@ -27,10 +27,7 @@ export class GridGalleryComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.mediaWatcher = this.media.media$.subscribe((change: MediaChange) => {
       this.cols = Number(this[`cols_${change.mqAlias}`]);
-      this.columns = new Array<number>(this.cols);
     });
-
-    this.columns = new Array<number>(this.cols);
   }
 
   ngOnDestroy(): void {

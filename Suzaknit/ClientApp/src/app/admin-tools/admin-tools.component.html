@@ -1,10 +1,10 @@
-    <p-fileUpload #fileInput name="file" multiple="multiple" customUpload="true" maxFileSize="2097152"
-                  (uploadHandler)="onUpload($event, fileInput)" accept="image/*"
-                  chooseLabel="{{'upload.choose' | translate}}"
-                  uploadLabel="{{'upload.upload' | translate}}"
-                  cancelLabel="{{'upload.cancel' | translate}}"
-                  invalidFileTypeMessageSummary="{{'upload.invalidFileTypeSummary' | translate}}"
-                  invalidFileTypeMessageDetail="{{'upload.invalidFileTypeDetailed' | translate}}"
-                  invalidFileSizeMessageSummary="{{'upload.invalidFileSizeSummary' | translate}}"
-                  invalidFileSizeMessageDetail="{{'upload.invalidFileSizeDetailed' | translate}}">
-    </p-fileUpload>
+<p-fileUpload #fileInput name="file" multiple="multiple" customUpload="true" maxFileSize="2097152"
+              (uploadHandler)="onUpload($event, fileInput)" accept="image/*"
+              chooseLabel="{{'upload.choose' | translate}}"
+              uploadLabel="{{'upload.upload' | translate}}"
+              cancelLabel="{{'upload.cancel' | translate}}"
+              invalidFileTypeMessageSummary="{{'upload.invalidFileTypeSummary' | translate}}"
+              invalidFileTypeMessageDetail="{{'upload.invalidFileTypeDetailed' | translate}}"
+              invalidFileSizeMessageSummary="{{'upload.invalidFileSizeSummary' | translate}}"
+              invalidFileSizeMessageDetail="{{'upload.invalidFileSizeDetailed' | translate}}">
+</p-fileUpload>

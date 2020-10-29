@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { UploadService } from '../services/upload.service';
-import { UploadedImages } from '../gallery-viewer/gallery-viewer.component';
 import { FileUpload } from 'primeng/fileupload';
+import { Image } from '../models/image';
+import { EImageCategory } from '../models/image-category';
 
 @Component({
   selector: 'app-admin-tools',
@@ -19,7 +19,7 @@ export class AdminToolsComponent implements OnInit {
   }
 
   onUpload = (event, fileInput: FileUpload): void => {
-    this.uploadService.uploadFiles(event.files).subscribe((files: UploadedImages[]) => {
+    this.uploadService.uploadFiles(event.files, EImageCategory.pupets).subscribe((files: Image[]) => {
       const date = new Date();
       files.forEach(file => {
         this.attachments.push({
