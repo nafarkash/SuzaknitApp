@@ -1,10 +1,10 @@
 <p-menubar [model]="items" styleClass="rtl-menu">
-  <div fxHide.lt-md class="login-container">
-    <span class="p-float-label p-mx-2">
+  <div fxLayout="row" fxLayoutGap="0.5em" fxHide.lt-lg>
+    <span class="p-float-label">
       <input type="text" id="username" class="p-inputtext-sm" pInputText [(ngModel)]="userName">
       <label for="username">{{'nav.username' | translate}}</label>
     </span>
-    <span class="p-float-label p-mx-2">
+    <span class="p-float-label">
       <input type="password" id="password" class="p-inputtext-sm" pInputText [(ngModel)]="password">
       <label for="password">{{'nav.password' | translate}}</label>
     </span>
