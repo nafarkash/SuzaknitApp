@@ -53,5 +53,20 @@
     "orchids": "סחלבים",
     "public_work": "מיצגים",
     "drawings": "ציורים"
+  },
+  "instructions": {
+    "nav": {
+      "cactus_with_flower": "קקטוס ופרח",
+      "cactus": "קקטוס",
+      "flower": "פרח",
+      "basics": "מתחילים לסרוג",
+      "magic_ring": "טבעת קסם",
+      "half_page": "חצי עמוד",
+      "closure": "סגירת סריגה",
+      "reduction": "צמצום וצמצום נסתר",
+      "turtole": "צב",
+      "turtole_parts": "חלקי הצב",
+      "turtole_connecting": "הרכבת החלקים"
+    }
   }
 }

@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ButtonModule } from 'primeng/button';
@@ -23,17 +22,22 @@ import { GridGalleryComponent } from './gallery-viewer/grid-gallery/grid-gallery
 import { GridGalleryItemComponent } from './gallery-viewer/grid-gallery/grid-gallery-item/grid-gallery-item.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DropdownModule } from 'primeng/dropdown';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { InstructionsComponent } from './instructions/instructions.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent,
     GalleryViewerComponent,
     AdminToolsComponent,
     GridGalleryComponent,
-    GridGalleryItemComponent
+    GridGalleryItemComponent,
+    InstructionsComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,11 +57,13 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     GalleriaModule,
     FileUploadModule,
+    PanelMenuModule,
     FormsModule,
     MatGridListModule,
+    FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'instructions', component: InstructionsComponent, pathMatch: 'full' },
       { path: 'gallery/:category', component: GalleryViewerComponent },
       { path: 'admin', component: AdminToolsComponent }
     ])

@@ -38,7 +38,7 @@ export class NavMenuComponent {
       },
       {
         label: this.translate.instant('nav.instruction'),
-        routerLink: 'fetch-data'
+        routerLink: 'instructions'
       },
       {
         label: this.translate.instant('nav.order'),

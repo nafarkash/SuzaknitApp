@@ -1,5 +1,5 @@
 <p-menubar [model]="items" styleClass="rtl-menu">
-  <div class="login-container">
+  <div fxHide.lt-md class="login-container">
     <span class="p-float-label p-mx-2">
       <input type="text" id="username" class="p-inputtext-sm" pInputText [(ngModel)]="userName">
       <label for="username">{{'nav.username' | translate}}</label>

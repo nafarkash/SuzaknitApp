@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    flex-direction:column;
+    height: inherit;
+}
+
+.container {
+    height: inherit;
+}

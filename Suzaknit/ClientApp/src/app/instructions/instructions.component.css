@@ -1,0 +1,53 @@
+:host {
+  height: inherit;
+}
+
+
+:host ::ng-deep .p-panelmenu {
+  /*width: 300px;*/
+  height: 100%;
+  background: var(--surface-a);
+}
+
+/*Panel menu hover & highlight color adjustment color*/
+:host ::ng-deep .p-panelmenu .p-panelmenu-header.p-highlight:not(.p-disabled) > a {
+  background: var(--surface-b) !important;
+  /*border-color: var(--surface-b) !important;*/
+}
+
+/*Panel menu hover & highlight color adjustment color*/
+:host ::ng-deep .p-panelmenu .p-panelmenu-header:not(.p-disabled) > a {
+  background: var(--surface-a) !important;
+  /*border-color: var(--surface-a) !important;*/
+}
+
+/*Panel menu hover & highlight color adjustment color*/
+:host ::ng-deep .p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
+  color: var(--primary-color) !important;
+}
+
+/*Change expand arrow to the other direction*/
+[dir=rtl] :host ::ng-deep .pi-angle-right:before {
+  content: '\e931';
+}
+
+/*Change expand arrow to the other direction*/
+[dir=rtl] :host ::ng-deep .pi-chevron-right:before {
+  content: "\e900";
+}
+
+/*Space between text and button*/
+:host ::ng-deep .p-menuitem-icon, .p-panelmenu-icon {
+  margin-right: unset;
+  margin-inline-end: 0.5rem;
+}
+
+/*Indent panel submenu*/
+:host ::ng-deep .p-panelmenu .p-panelmenu-content .p-submenu-list:not(.p-panelmenu-root-submenu) {
+  padding: 0 1rem;
+}
+
+:host ::ng-deep .p-panelmenu .p-panelmenu-header > a .p-panelmenu-icon {
+  margin-right: unset;
+  margin-inline-end: 0.5rem;
+}

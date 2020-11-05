@@ -53,5 +53,20 @@
     "orchids": "Orchids",
     "public_work": "Monuments",
     "drawings": "Drawings"
+  },
+  "instructions": {
+    "nav": {
+      "cactus_with_flower": "Cactus with flower",
+      "cactus": "Cactus",
+      "flower": "Flower",
+      "basics": "Learning basics",
+      "magic_ring": "Magic ring",
+      "half_page": "Half page",
+      "closure": "Closure",
+      "reduction": "Reduction",
+      "turtole": "Turtole",
+      "turtole_parts": "Different parts",
+      "turtole_connecting": "Connecting the pieces"
+    }
   }
 }
