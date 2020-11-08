@@ -26,6 +26,8 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InstructionMenuItemPipe } from './pipes/instruction-menu-item.pipe';
+import { InstructionVideoComponent } from './instructions/instruction-video/instruction-video.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     GridGalleryComponent,
     GridGalleryItemComponent,
     InstructionsComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    InstructionMenuItemPipe,
+    InstructionVideoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -63,7 +67,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'instructions', component: InstructionsComponent, pathMatch: 'full' },
+      {
+        path: 'instructions',
+        component: InstructionsComponent,
+        children: [
+          {
+            path: ':videoUrl',
+            component: InstructionVideoComponent,
+            //outlet: 'videoUrl'
+          }
+        ]
+      },
       { path: 'gallery/:category', component: GalleryViewerComponent },
       { path: 'admin', component: AdminToolsComponent }
     ])

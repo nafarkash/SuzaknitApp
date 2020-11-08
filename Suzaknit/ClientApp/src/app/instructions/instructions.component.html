@@ -1,4 +1,6 @@
 <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill>
-  <p-panelMenu fxFlex.gt-sm="20" [model]="items"></p-panelMenu>
-  <iframe fxFlex.gt-sm="80" *ngIf="videoUrl" style="margin: 2em" [src]='videoUrl | safeUrl' frameborder="0" allowFullScreen></iframe>
+  <p-panelMenu fxFlex.gt-sm="20" [model]="items | instructionMenuItem"></p-panelMenu>
+  <div fxFlex.gt-sm="80" fxFlexFill class="videoContainer">
+    <router-outlet></router-outlet>
+  </div>
 </div>

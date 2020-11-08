@@ -10,5 +10,6 @@ namespace Suzaknit.Data
         }
         public DbSet<AppUser> Users { get; set; }
         public DbSet<UploadedImages> Images { get; set; }
+        public DbSet<InstructionMetadata> Instructions { get; set; }
     }
 }
