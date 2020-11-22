@@ -28,6 +28,9 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { InstructionMenuItemPipe } from './pipes/instruction-menu-item.pipe';
 import { InstructionVideoComponent } from './instructions/instruction-video/instruction-video.component';
+import { TranslationManagerComponent } from './admin-tools/translation-manager/translation-manager.component';
+import { TreeTableModule } from 'primeng/treetable';
+import { TranslationEditPipe } from './pipes/translation-edit.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { InstructionVideoComponent } from './instructions/instruction-video/inst
     InstructionsComponent,
     SafeUrlPipe,
     InstructionMenuItemPipe,
-    InstructionVideoComponent
+    InstructionVideoComponent,
+    TranslationManagerComponent,
+    TranslationEditPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -62,6 +67,7 @@ import { InstructionVideoComponent } from './instructions/instruction-video/inst
     GalleriaModule,
     FileUploadModule,
     PanelMenuModule,
+    TreeTableModule,
     FormsModule,
     MatGridListModule,
     FlexLayoutModule,
@@ -79,7 +85,8 @@ import { InstructionVideoComponent } from './instructions/instruction-video/inst
         ]
       },
       { path: 'gallery/:category', component: GalleryViewerComponent },
-      { path: 'admin', component: AdminToolsComponent }
+      { path: 'admin', component: AdminToolsComponent },
+      { path: 'translation', component: TranslationManagerComponent }
     ])
   ],
   providers: [
@@ -96,7 +103,8 @@ export class AppModule { }
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  //return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, 'https://localhost:5001/i18n/', '.json');
 }
 
 export function appInitializerFactory(translate: TranslateService, injector: Injector) {

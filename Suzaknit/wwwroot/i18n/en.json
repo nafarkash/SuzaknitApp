@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "log_in": "Login",
+    "log_out": "Logout",
+    "username": "UserName",
+    "password": "Password",
+    "crochet_gallery": "Crochet gallery",
+    "drawing_gallery": "Drawing gallery",
+    "instruction": "Instructions",
+    "order": "Order",
+    "contact": "Contact",
+    "settings": "Settings",
+    "choose_language": "Language",
+    "choose_theme": "Theme",
+    "crochet": {
+      "cactus": "Cactus",
+      "pupets": "Pupets",
+      "orchids": "Orchids",
+      "public_work": "Monuments"
+    },
+    "lang": {
+      "hebrew": "HE",
+      "english": "EN"
+    },
+    "theme": {
+      "aryaBlue": "Arya Blue",
+      "aryaGreen": "Arya Green",
+      "aryaOrange": "Arya Orange",
+      "aryaPurple": "Arya Purple",
+      "bootstrapDarkBlue": "BS Dark Blue",
+      "bootstrapDarkPurple": "BS Dark Purple",
+      "bootstrapLightBlue": "BS Light Blue",
+      "bootstrapLightPurple": "BS Light Purple",
+      "fluentLight": "Fluent Light",
+      "lunaAmber": "Luna Amber",
+      "lunaBlue": "Luna Blue",
+      "lunaGreen": "Luna Green",
+      "lunaPink": "Luna Pink"
+    }
+  },
+  "upload": {
+    "choose": "Choose",
+    "upload": "Upload",
+    "cancel": "Cancel",
+    "invalidFileTypeSummary": "{0}: Invalid file type, ",
+    "invalidFileTypeDetailed": "allowed file types: {0}.",
+    "invalidFileSizeSummary": "{0}: Invalid file size, ",
+    "invalidFileSizeDetailed": "maximum upload size is {0}."
+  },
+  "galleryCategories": {
+    "cactus": "Cactus",
+    "pupets": "Pupets",
+    "orchids": "Orchids",
+    "public_work": "Monuments",
+    "drawings": "Drawings"
+  },
+  "instructions": {
+    "nav": {
+      "cactus_with_flower": "Cactus with flower",
+      "cactus": "Cactus",
+      "flower": "Flower",
+      "basics": "Learning basics",
+      "magic_ring": "Magic ring",
+      "half_page": "Half page",
+      "closure": "Closure",
+      "reduction": "Reduction",
+      "turtole": "Turtole",
+      "turtole_parts": "Different parts",
+      "turtole_connecting": "Connecting the pieces"
+    }
+  }
+}

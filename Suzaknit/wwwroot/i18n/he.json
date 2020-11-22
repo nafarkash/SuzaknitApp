@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "log_in": "התחבר",
+    "log_out": "התנתק",
+    "username": "שם משתמש",
+    "password": "סיסמא",
+    "crochet_gallery": "גלריית סרוגים",
+    "drawing_gallery": "גלריית ציורים",
+    "instruction": "הדרכות",
+    "order": "הזמנות",
+    "contact": "צרו קשר",
+    "settings": "הגדרות",
+    "choose_language": "בחר שפה",
+    "choose_theme": "בחר עיצוב",
+    "crochet": {
+      "cactus": "קקטוסים",
+      "pupets": "בובות",
+      "orchids": "סחלבים",
+      "public_work": "מיצגים בטבע"
+    },
+    "lang": {
+      "hebrew": "HE",
+      "english": "EN"
+    },
+    "theme": {
+      "aryaBlue": "Arya Blue",
+      "aryaGreen": "Arya Green",
+      "aryaOrange": "Arya Orange",
+      "aryaPurple": "Arya Purple",
+      "bootstrapDarkBlue": "BS Dark Blue",
+      "bootstrapDarkPurple": "BS Dark Purple",
+      "bootstrapLightBlue": "BS Light Blue",
+      "bootstrapLightPurple": "BS Light Purple",
+      "fluentLight": "Fluent Light",
+      "lunaAmber": "Luna Amber",
+      "lunaBlue": "Luna Blue",
+      "lunaGreen": "Luna Green",
+      "lunaPink": "Luna Pink"
+    }
+  },
+  "upload": {
+    "choose": "בחר",
+    "upload": "העלאה",
+    "cancel": "ביטול",
+    "invalidFileTypeSummary": "{0}: קובץ אסור להעלאה, ",
+    "invalidFileTypeDetailed": "ניתן להעלות קבצים מסוג: {0}.",
+    "invalidFileSizeSummary": "{0}: גודל קובץ לא תקין, ",
+    "invalidFileSizeDetailed": "מקסימום הניתן הוא {0}."
+  },
+  "galleryCategories": {
+    "cactus": "קקטוסים",
+    "pupets": "בובות",
+    "orchids": "סחלבים",
+    "public_work": "מיצגים",
+    "drawings": "ציורים"
+  },
+  "instructions": {
+    "nav": {
+      "cactus_with_flower": "קקטוס ופרח",
+      "cactus": "קקטוס",
+      "flower": "פרח",
+      "basics": "מתחילים לסרוג",
+      "magic_ring": "טבעת קסם",
+      "half_page": "חצי עמוד",
+      "closure": "סגירת סריגה",
+      "reduction": "צמצום וצמצום נסתר",
+      "turtole": "צב",
+      "turtole_parts": "חלקי הצב",
+      "turtole_connecting": "הרכבת החלקים"
+    }
+  }
+}

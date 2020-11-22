@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UploadService } from '../services/upload.service';
+import { AdminToolsService } from '../services/admin-tools.service';
 import { FileUpload } from 'primeng/fileupload';
 import { Image } from '../models/image';
 import { EImageCategory } from '../models/image-category';
@@ -16,7 +16,7 @@ export class AdminToolsComponent implements OnInit {
   galleryCategories: SelectItem<EImageCategory>[];
   selectedCategory: EImageCategory;
 
-  constructor(private uploadService: UploadService, private translate: TranslateService) {
+  constructor(private adminToolsService: AdminToolsService, private translate: TranslateService) {
     this.translate.onLangChange.subscribe(() => this.buildCategoryDropdown());
   }
 
@@ -25,7 +25,7 @@ export class AdminToolsComponent implements OnInit {
   }
 
   onUpload = (event, fileInput: FileUpload): void => {
-    this.uploadService.uploadFiles(event.files, this.selectedCategory).subscribe((files: Image[]) => {
+    this.adminToolsService.uploadFiles(event.files, this.selectedCategory).subscribe((files: Image[]) => {
       const date = new Date();
       files.forEach(file => {
         this.attachments.push({

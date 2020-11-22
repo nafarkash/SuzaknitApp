@@ -1,13 +1,18 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EImageCategory } from '../models/image-category';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UploadService {
+export class AdminToolsService {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+
+  getTranslationData(translationLang: string): Observable<JSON> {
+    return this.http.get<JSON>(this.baseUrl + `i18n/${translationLang}.json`);
+  }
 
   //upload file method
   uploadFiles(files: File[], category: EImageCategory) {
