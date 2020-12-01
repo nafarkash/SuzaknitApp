@@ -1,4 +1,6 @@
-<p-treeTable [value]="files | translationEdit" [columns]="cols" style="direction: ltr">
+<p-treeTable [value]="files | translationEdit" [columns]="cols" style="direction: ltr"
+             selectionMode="single" [(selection)]="selectedNode" [metaKeySelection]="false" dataKey="id"
+             (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
@@ -7,16 +9,29 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns; let i = index" ttEditableColumn [ngClass]="{'p-toggler-column': i === 0}">
-        <p-treeTableToggler [rowNode]="rowNode" *ngIf="i === 0"></p-treeTableToggler>
-        <p-treeTableCellEditor>
-          <ng-template pTemplate="input">
-            <input pInputText type="text" [(ngModel)]="rowData[col.field]" [ngStyle]="{'width': i == 0 ? '90%': '100%'}">
-          </ng-template>
-          <ng-template pTemplate="output">{{rowData[col.field]}}</ng-template>
-        </p-treeTableCellEditor>
-      </td>
+    <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">
+      <ng-container *ngFor="let col of columns; let i = index">
+        <td *ngIf="i < columns.length - 1" ttEditableColumn>
+          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i === 0"></p-treeTableToggler>
+          <p-treeTableCellEditor *ngIf="!rowNode.node.hasOwnProperty('children') || i === 0">
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData[col.field]">
+            </ng-template>
+            <ng-template pTemplate="output">{{rowData[col.field]}}</ng-template>
+          </p-treeTableCellEditor>
+        </td>
+        <!--<td *ngIf="i < columns.length - 1">
+          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+          {{rowData[col.field]}}
+        </td>-->
+        <td *ngIf="i === columns.length - 1">
+          <ng-container *ngIf="rowData === selectedNode?.data">
+            <button pButton pRipple (click)="addNewElement()" icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+          </ng-container>
+        </td>
+
+      </ng-container>
     </tr>
   </ng-template>
 </p-treeTable>

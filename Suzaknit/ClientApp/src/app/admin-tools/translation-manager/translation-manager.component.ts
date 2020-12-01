@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminToolsService } from '../../services/admin-tools.service';
-import { concat, merge, forkJoin } from 'rxjs';
+import { forkJoin } from 'rxjs';
+import { TreeNode } from 'primeng/api';
 
 @Component({
   selector: 'app-translation-manager',
@@ -12,6 +13,8 @@ export class TranslationManagerComponent implements OnInit {
   files: { en: JSON, he: JSON };
 
   cols: any[];
+  selectedNode: TreeNode;
+  tempSelectedNode: TreeNode;
 
   constructor(private adminService: AdminToolsService) { }
 
@@ -26,7 +29,29 @@ export class TranslationManagerComponent implements OnInit {
     this.cols = [
       { field: 'id', header: 'ID' },
       { field: 'he', header: 'He' },
-      { field: 'en', header: 'En' }
+      { field: 'en', header: 'En' },
+      {field: 'buttons', header: ''}
     ];
   }
+
+  nodeSelect(event) {
+    this.tempSelectedNode = this.selectedNode;
+  }
+
+  nodeUnselect(event) {
+    if (event.node.data.id === this.tempSelectedNode.data.id) {
+      this.selectedNode = this.tempSelectedNode;
+    }
+  }
+
+  addNewElement() {
+    
+  }
+
+  checkValues(rowData, rowNode) {
+    console.log('data',rowData)
+    console.log('node',rowNode)
+    return true
+  }
+
 }
