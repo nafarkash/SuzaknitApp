@@ -5,3 +5,11 @@
 :host ::ng-deep .p-treetable .p-treetable-tbody > tr.p-highlight {
   background: var(--surface-b) !important;
 }
+
+:host ::ng-deep .margin-right-4 {
+  margin: 0 4em 0 0;
+}
+
+:host ::ng-deep .p-treetable .p-treetable-tbody > tr > .align-right {
+  text-align: right;
+}

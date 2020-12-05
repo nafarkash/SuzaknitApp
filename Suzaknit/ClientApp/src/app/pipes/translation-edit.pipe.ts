@@ -26,7 +26,8 @@ export class TranslationEditPipe implements PipeTransform {
       data: {
         'id': prop
       },
-      children: this.recursiveExtraction(en[prop], he[prop])
+      children: this.recursiveExtraction(en[prop], he[prop]),
+      expanded: true
     }
   }
 

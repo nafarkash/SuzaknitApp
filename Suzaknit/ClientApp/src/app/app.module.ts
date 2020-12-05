@@ -31,6 +31,7 @@ import { InstructionVideoComponent } from './instructions/instruction-video/inst
 import { TranslationManagerComponent } from './admin-tools/translation-manager/translation-manager.component';
 import { TreeTableModule } from 'primeng/treetable';
 import { TranslationEditPipe } from './pipes/translation-edit.pipe';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { TranslationEditPipe } from './pipes/translation-edit.pipe';
     FileUploadModule,
     PanelMenuModule,
     TreeTableModule,
+    SidebarModule,
     FormsModule,
     MatGridListModule,
     FlexLayoutModule,

@@ -1,5 +1,5 @@
-<p-treeTable [value]="files | translationEdit" [columns]="cols" style="direction: ltr"
-             selectionMode="single" [(selection)]="selectedNode" [metaKeySelection]="false" dataKey="id"
+<p-treeTable [value]="files | translationEdit" [columns]="cols" dir="ltr"
+             selectionMode="single" [(selection)]="selectedNode" dataKey="id" sortField="id"
              (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)">
   <ng-template pTemplate="header" let-columns>
     <tr>
@@ -24,10 +24,11 @@
           <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
           {{rowData[col.field]}}
         </td>-->
-        <td *ngIf="i === columns.length - 1">
+        <td *ngIf="i === columns.length - 1" fxLayoutGap="0.5em" class="align-right">
           <ng-container *ngIf="rowData === selectedNode?.data">
-            <button pButton pRipple (click)="addNewElement()" icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+            <button pButton pRipple (click)="showElementModal()" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+            <button pButton pRipple (click)="removeElement()" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
           </ng-container>
         </td>
 
@@ -35,3 +36,27 @@
     </tr>
   </ng-template>
 </p-treeTable>
+
+<p-sidebar [(visible)]="addRowModalVisibility" position="bottom" [baseZIndex]="2" dir="ltr">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 style="font-weight:normal">{{selectedNode?.data.id}}</h2>
+    <div fxLayoutGap="0.5em">
+      <p-button type="button" (click)="addSiblingElement()" label="Add Sibling" styleClass="p-button-success"></p-button>
+      <p-button type="button" (click)="addChildElement()" label="Add Child" styleClass="p-button-secondary margin-right-4"></p-button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0.5em" fxHide.lt-lg>
+    <span class="p-float-label">
+      <input id="key-input" type="text" pInputText [(ngModel)]="newTreeElement.key" [ngClass]="{'p-invalid': newTreeElement.invalidKey}">
+      <label for="key-input">Key</label>
+    </span>
+    <span class="p-float-label">
+      <input id="he-input" type="text" pInputText [(ngModel)]="newTreeElement.he" [ngClass]="{'p-invalid': newTreeElement.invalidHe}">
+      <label for="he-input">He</label>
+    </span>
+    <span class="p-float-label">
+      <input id="en-input" type="text" pInputText [(ngModel)]="newTreeElement.en" [ngClass]="{'p-invalid': newTreeElement.invalidEn}">
+      <label for="en-input">En</label>
+    </span>
+  </div>
+</p-sidebar>
