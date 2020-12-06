@@ -13,3 +13,7 @@
 :host ::ng-deep .p-treetable .p-treetable-tbody > tr > .align-right {
   text-align: right;
 }
+
+:host ::ng-deep .p-treetable .p-treetable-tbody > tr > .align-center {
+  text-align: center;
+}

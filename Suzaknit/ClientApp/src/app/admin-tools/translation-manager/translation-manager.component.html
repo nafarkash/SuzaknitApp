@@ -11,7 +11,7 @@
   <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
     <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">
       <ng-container *ngFor="let col of columns; let i = index">
-        <td *ngIf="i < columns.length - 1" ttEditableColumn>
+        <!--<td *ngIf="i < columns.length - 1" ttEditableColumn>
           <p-treeTableToggler [rowNode]="rowNode" *ngIf="i === 0"></p-treeTableToggler>
           <p-treeTableCellEditor *ngIf="!rowNode.node.hasOwnProperty('children') || i === 0">
             <ng-template pTemplate="input">
@@ -19,15 +19,15 @@
             </ng-template>
             <ng-template pTemplate="output">{{rowData[col.field]}}</ng-template>
           </p-treeTableCellEditor>
-        </td>
-        <!--<td *ngIf="i < columns.length - 1">
+        </td>-->
+        <td *ngIf="i < columns.length - 1">
           <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
           {{rowData[col.field]}}
-        </td>-->
+        </td>
         <td *ngIf="i === columns.length - 1" fxLayoutGap="0.5em" class="align-right">
           <ng-container *ngIf="rowData === selectedNode?.data">
-            <button pButton pRipple (click)="showElementModal()" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
-            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
+            <button pButton pRipple (click)="showAddElementModal()" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
+            <button pButton pRipple (click)="showUpdateElementModal()" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
             <button pButton pRipple (click)="removeElement()" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
           </ng-container>
         </td>
@@ -35,15 +35,25 @@
       </ng-container>
     </tr>
   </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td [attr.colspan]="columns.length" class="align-center" (click)="showAddElementModal()">
+        <span>Click to add new element to table</span>
+      </td>
+    </tr>
+  </ng-template>
 </p-treeTable>
 
 <p-sidebar [(visible)]="addRowModalVisibility" position="bottom" [baseZIndex]="2" dir="ltr">
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <h2 style="font-weight:normal">{{selectedNode?.data.id}}</h2>
-    <div fxLayoutGap="0.5em">
+    <div fxLayoutGap="0.5em" *ngIf="addNewElementModal; else editElementModal">
       <p-button type="button" (click)="addSiblingElement()" label="Add Sibling" styleClass="p-button-success"></p-button>
       <p-button type="button" (click)="addChildElement()" label="Add Child" styleClass="p-button-secondary margin-right-4"></p-button>
     </div>
+    <ng-template #editElementModal>
+      <p-button type="button" (click)="updateElement()" label="Update" styleClass="p-button-success margin-right-4"></p-button>
+    </ng-template>
   </div>
   <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0.5em" fxHide.lt-lg>
     <span class="p-float-label">
@@ -51,11 +61,11 @@
       <label for="key-input">Key</label>
     </span>
     <span class="p-float-label">
-      <input id="he-input" type="text" pInputText [(ngModel)]="newTreeElement.he" [ngClass]="{'p-invalid': newTreeElement.invalidHe}">
+      <input id="he-input" type="text" pInputText [disabled]="newTreeElement.isParent" [(ngModel)]="newTreeElement.he" [ngClass]="{'p-invalid': newTreeElement.invalidHe && !newTreeElement.isParent}">
       <label for="he-input">He</label>
     </span>
     <span class="p-float-label">
-      <input id="en-input" type="text" pInputText [(ngModel)]="newTreeElement.en" [ngClass]="{'p-invalid': newTreeElement.invalidEn}">
+      <input id="en-input" type="text" pInputText [disabled]="newTreeElement.isParent" [(ngModel)]="newTreeElement.en" [ngClass]="{'p-invalid': newTreeElement.invalidEn && !newTreeElement.isParent}">
       <label for="en-input">En</label>
     </span>
   </div>

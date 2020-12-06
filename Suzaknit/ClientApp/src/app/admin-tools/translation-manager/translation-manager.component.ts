@@ -12,6 +12,7 @@ export class TranslationManagerComponent implements OnInit {
 
   files: { en: JSON, he: JSON };
   addRowModalVisibility: boolean;
+  addNewElementModal: boolean;
   cols: any[];
   selectedNode: TreeNode;
   tempSelectedNode: TreeNode;
@@ -45,8 +46,20 @@ export class TranslationManagerComponent implements OnInit {
     }
   }
 
-  showElementModal() {
+  showAddElementModal() {
     this.newTreeElement = new TreeElement();
+    this.addNewElementModal = true;
+    this.addRowModalVisibility = true;
+  }
+
+  showUpdateElementModal() {
+    this.newTreeElement = new TreeElement({
+      key: this.selectedNode.data.id,
+      he: this.selectedNode.data.he,
+      en: this.selectedNode.data.en,
+      isParent: !!this.selectedNode.children && !!this.selectedNode.children.length
+    });
+    this.addNewElementModal = false;
     this.addRowModalVisibility = true;
   }
 
@@ -71,6 +84,40 @@ export class TranslationManagerComponent implements OnInit {
     this.addRowModalVisibility = false;
   }
 
+  updateElement() {
+    if (this.newTreeElement.hasErrors()) {
+      return;
+    }
+
+    const idHierarchy: string[] = this.getHierarchyID(this.selectedNode);
+    let currentEnLocation = this.files.en;
+    let currentHeLocation = this.files.he;
+    if (idHierarchy && idHierarchy.length) {
+      idHierarchy.forEach((value, index) => {
+        if (index === idHierarchy.length - 1) {
+          // Add new elements
+          currentEnLocation[this.newTreeElement.key] = this.newTreeElement.isParent ? currentEnLocation[value] : this.newTreeElement.en
+          currentHeLocation[this.newTreeElement.key] = this.newTreeElement.isParent ? currentHeLocation[value] : this.newTreeElement.he
+          // Remove current elements
+          if (value !== this.newTreeElement.key) {
+            delete currentEnLocation[value];
+            delete currentHeLocation[value];
+          }
+        } else {
+          currentEnLocation = currentEnLocation[value];
+          currentHeLocation = currentHeLocation[value];
+        }
+      });
+    } else {
+      currentEnLocation = this.addtoObject(currentEnLocation, true);
+      currentHeLocation = this.addtoObject(currentHeLocation, false);
+    }
+
+    // refresh table
+    this.files = { ... this.files };
+    this.addRowModalVisibility = false;
+  }
+
   removeElement() {
     const idHierarchy: string[] = this.getHierarchyID(this.selectedNode);
     let currentEnLocation = this.files.en;
@@ -87,6 +134,7 @@ export class TranslationManagerComponent implements OnInit {
 
     // refresh table
     this.files = { ... this.files };
+    this.selectedNode = undefined;
   }
 
   private addElement(idHierarchy: string[]) {
@@ -144,6 +192,11 @@ export class TreeElement {
   invalidKey = false;
   invalidHe = false;
   invalidEn = false;
+  isParent = false;
+
+  public constructor(init?: Partial<TreeElement>) {
+    Object.assign(this, init);
+  }
 
   set key(value: string) {
     this._key = value;
@@ -175,8 +228,8 @@ export class TreeElement {
 
   hasErrors(): boolean {
     this.invalidKey = this._key === null || this._key === undefined || this._key === '';
-    this.invalidHe = this._he === null || this._he === undefined || this._he === '';
-    this.invalidEn = this._en === null || this._en === undefined || this._en === '';
+    this.invalidHe = !this.isParent && (this._he === null || this._he === undefined || this._he === '');
+    this.invalidEn = !this.isParent && (this._en === null || this._en === undefined || this._en === '');
     return this.invalidKey || this.invalidHe || this.invalidEn;
   }
 }
