@@ -14,6 +14,10 @@ export class AdminToolsService {
     return this.http.get<JSON>(this.baseUrl + `i18n/${translationLang}.json`);
   }
 
+  setTranslation(jsonData) {
+    return this.http.post(this.baseUrl + 'api/translation/upload', jsonData);
+  }
+
   //upload file method
   uploadFiles(files: File[], category: EImageCategory) {
     const formData: FormData = new FormData();

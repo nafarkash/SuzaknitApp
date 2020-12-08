@@ -46,6 +46,18 @@ export class TranslationManagerComponent implements OnInit {
     }
   }
 
+  updateServer() {
+    const translations = {
+      translations: [
+        { json: this.files.he, fileName: 'he.json' },
+        { json: this.files.en, fileName: 'en.json' }
+      ]
+    }
+    this.adminService.setTranslation(translations).subscribe(() => {
+      console.log('Translation successfully uploaded');
+    });
+  }
+
   showAddElementModal() {
     this.newTreeElement = new TreeElement();
     this.addNewElementModal = true;
@@ -96,8 +108,8 @@ export class TranslationManagerComponent implements OnInit {
       idHierarchy.forEach((value, index) => {
         if (index === idHierarchy.length - 1) {
           // Add new elements
-          currentEnLocation[this.newTreeElement.key] = this.newTreeElement.isParent ? currentEnLocation[value] : this.newTreeElement.en
-          currentHeLocation[this.newTreeElement.key] = this.newTreeElement.isParent ? currentHeLocation[value] : this.newTreeElement.he
+          currentEnLocation[this.newTreeElement.key] = this.newTreeElement.isParent ? currentEnLocation[value] : this.newTreeElement.en;
+          currentHeLocation[this.newTreeElement.key] = this.newTreeElement.isParent ? currentHeLocation[value] : this.newTreeElement.he;
           // Remove current elements
           if (value !== this.newTreeElement.key) {
             delete currentEnLocation[value];

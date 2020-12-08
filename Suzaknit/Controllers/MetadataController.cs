@@ -5,8 +5,6 @@ using Suzaknit.DTO;
 using Suzaknit.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Suzaknit.Controllers

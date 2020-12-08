@@ -1,3 +1,4 @@
+<button pButton pRipple (click)="updateServer()" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
 <p-treeTable [value]="files | translationEdit" [columns]="cols" dir="ltr"
              selectionMode="single" [(selection)]="selectedNode" dataKey="id" sortField="id"
              (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)">
