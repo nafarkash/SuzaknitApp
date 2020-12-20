@@ -1,63 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminToolsService } from '../services/admin-tools.service';
-import { FileUpload } from 'primeng/fileupload';
-import { Image } from '../models/image';
-import { EImageCategory } from '../models/image-category';
-import { SelectItem } from 'primeng/api';
-import { TranslateService } from '@ngx-translate/core';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
+import { TranslationManagerComponent } from './translation-manager/translation-manager.component';
 
 @Component({
   selector: 'app-admin-tools',
   templateUrl: './admin-tools.component.html',
-  styleUrls: ['./admin-tools.component.css']
+  styleUrls: ['./admin-tools.component.css'],
+  providers: [DialogService]
 })
 export class AdminToolsComponent implements OnInit {
-  attachments: any[] = [];
-  galleryCategories: SelectItem<EImageCategory>[];
-  selectedCategory: EImageCategory;
 
-  constructor(private adminToolsService: AdminToolsService, private translate: TranslateService) {
-    this.translate.onLangChange.subscribe(() => this.buildCategoryDropdown());
+  constructor(private dialogService: DialogService) { }
+
+  ngOnInit(): void {
   }
 
-  ngOnInit() {
-    this.buildCategoryDropdown();
+  showImages() {
+    const ref = this.dialogService.open(ImageUploaderComponent, {
+      header: 'Choose a Car',
+      width: '70%'
+    });
   }
 
-  onUpload = (event, fileInput: FileUpload): void => {
-    this.adminToolsService.uploadFiles(event.files, this.selectedCategory).subscribe((files: Image[]) => {
-      const date = new Date();
-      files.forEach(file => {
-        this.attachments.push({
-          name: file['name'],
-          category: file['category'],
-          uploadtime: date.getDate()
-        });
-      })
-
-      fileInput.clear();
-
-      // Message for successful upload
-
-    },
-      err => {
-        console.log(err);
-      }
-    );
+  showTranslation() {
+    const ref: DynamicDialogRef = this.dialogService.open(TranslationManagerComponent, {
+      header: 'Translation Manager',
+      width: '90%',
+      style: { "direction": "ltr" },
+      contentStyle: { "min-height": "300px" }
+    });
   }
 
-  //Maintain delete list
-  deleteFile(list, index) {
-    //this.deletedattachments.push(this.attachments[index]);
-    this.attachments.splice(index, 1);
-  }
-
-  private buildCategoryDropdown() {
-    this.galleryCategories = [
-      { label: this.translate.instant('galleryCategories.cactus'), value: EImageCategory.cactus },
-      { label: this.translate.instant('galleryCategories.drawings'), value: EImageCategory.drawings },
-      { label: this.translate.instant('galleryCategories.public_work'), value: EImageCategory.monuments },
-      { label: this.translate.instant('galleryCategories.orchids'), value: EImageCategory.orchids },
-      { label: this.translate.instant('galleryCategories.pupets'), value: EImageCategory.pupets }]
-  }
 }

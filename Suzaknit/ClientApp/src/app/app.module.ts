@@ -32,6 +32,9 @@ import { TranslationManagerComponent } from './admin-tools/translation-manager/t
 import { TreeTableModule } from 'primeng/treetable';
 import { TranslationEditPipe } from './pipes/translation-edit.pipe';
 import { SidebarModule } from 'primeng/sidebar';
+import { BlockUIModule } from 'primeng/blockui';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ImageUploaderComponent } from './admin-tools/image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { SidebarModule } from 'primeng/sidebar';
     InstructionMenuItemPipe,
     InstructionVideoComponent,
     TranslationManagerComponent,
-    TranslationEditPipe
+    TranslationEditPipe,
+    ImageUploaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -70,6 +74,8 @@ import { SidebarModule } from 'primeng/sidebar';
     PanelMenuModule,
     TreeTableModule,
     SidebarModule,
+    BlockUIModule,
+    DynamicDialogModule,
     FormsModule,
     MatGridListModule,
     FlexLayoutModule,

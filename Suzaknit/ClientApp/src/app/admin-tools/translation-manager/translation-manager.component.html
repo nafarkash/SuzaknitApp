@@ -1,35 +1,34 @@
-<button pButton pRipple (click)="updateServer()" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
-<p-treeTable [value]="files | translationEdit" [columns]="cols" dir="ltr"
+<p-blockUI [blocked]="addRowModalVisibility" [target]="translationTree"></p-blockUI>
+<!--<div fxLayout="column" fxLayoutAlign="space-between center">-->
+<!--<button pButton pRipple label="Update Server" (click)="updateServer()" class="sticky-header p-button-rounded p-button-success"></button>-->
+<p-treeTable #translationTree [value]="files | translationEdit" [columns]="cols" dir="ltr"
              selectionMode="single" [(selection)]="selectedNode" dataKey="id" sortField="id"
-             (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)">
+             (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)"
+             styleClass="p-treetable-sm">
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of columns">
-        {{col.header}}
-      </th>
+      <ng-container *ngFor="let col of columns; let i = index">
+        <th *ngIf="i < columns.length - 1">
+          {{col.header}}
+        </th>
+        <th *ngIf="i === columns.length - 1" class="update-server">
+          <span (click)="updateServer()">Update Server</span>
+        </th>
+      </ng-container>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
     <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">
       <ng-container *ngFor="let col of columns; let i = index">
-        <!--<td *ngIf="i < columns.length - 1" ttEditableColumn>
-          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i === 0"></p-treeTableToggler>
-          <p-treeTableCellEditor *ngIf="!rowNode.node.hasOwnProperty('children') || i === 0">
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="rowData[col.field]">
-            </ng-template>
-            <ng-template pTemplate="output">{{rowData[col.field]}}</ng-template>
-          </p-treeTableCellEditor>
-        </td>-->
         <td *ngIf="i < columns.length - 1">
           <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
           {{rowData[col.field]}}
         </td>
-        <td *ngIf="i === columns.length - 1" fxLayoutGap="0.5em" class="align-right">
+        <td *ngIf="i === columns.length - 1" fxLayoutGap="0.5em" class="align-end">
           <ng-container *ngIf="rowData === selectedNode?.data">
-            <button pButton pRipple (click)="showAddElementModal()" icon="pi pi-plus" class="p-button-rounded p-button-success"></button>
-            <button pButton pRipple (click)="showUpdateElementModal()" icon="pi pi-pencil" class="p-button-rounded p-button-warning"></button>
-            <button pButton pRipple (click)="removeElement()" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+            <button pButton pRipple (click)="showAddElementModal()" icon="pi pi-plus" class="p-button-sm p-button-rounded p-button-success"></button>
+            <button pButton pRipple (click)="showUpdateElementModal()" icon="pi pi-pencil" class="p-button-sm p-button-rounded p-button-warning"></button>
+            <button pButton pRipple (click)="removeElement()" icon="pi pi-trash" class="p-button-sm p-button-rounded p-button-danger"></button>
           </ng-container>
         </td>
 
@@ -44,8 +43,9 @@
     </tr>
   </ng-template>
 </p-treeTable>
+<!--</div>-->
 
-<p-sidebar [(visible)]="addRowModalVisibility" position="bottom" [baseZIndex]="2" dir="ltr">
+<p-sidebar [(visible)]="addRowModalVisibility" position="bottom" [baseZIndex]="2" [modal]="false" [appendTo]="translationTree" dir="ltr">
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <h2 style="font-weight:normal">{{selectedNode?.data.id}}</h2>
     <div fxLayoutGap="0.5em" *ngIf="addNewElementModal; else editElementModal">
