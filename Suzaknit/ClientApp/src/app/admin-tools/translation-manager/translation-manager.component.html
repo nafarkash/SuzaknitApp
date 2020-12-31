@@ -20,7 +20,7 @@
   <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
     <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">
       <ng-container *ngFor="let col of columns; let i = index">
-        <td *ngIf="i < columns.length - 1">
+        <td *ngIf="i < columns.length - 1" [ngClass]="{'align-right': col.field === 'he'}">
           <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
           {{rowData[col.field]}}
         </td>
@@ -62,7 +62,7 @@
       <label for="key-input">Key</label>
     </span>
     <span class="p-float-label">
-      <input id="he-input" type="text" pInputText [disabled]="newTreeElement.isParent" [(ngModel)]="newTreeElement.he" [ngClass]="{'p-invalid': newTreeElement.invalidHe && !newTreeElement.isParent}">
+      <input id="he-input" type="text" dir="rtl" pInputText [disabled]="newTreeElement.isParent" [(ngModel)]="newTreeElement.he" [ngClass]="{'p-invalid': newTreeElement.invalidHe && !newTreeElement.isParent}">
       <label for="he-input">He</label>
     </span>
     <span class="p-float-label">
