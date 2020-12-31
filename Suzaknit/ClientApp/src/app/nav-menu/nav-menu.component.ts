@@ -41,8 +41,7 @@ export class NavMenuComponent {
         routerLink: 'instructions'
       },
       {
-        label: this.translate.instant('nav.order'),
-        routerLink: 'translation'
+        label: this.translate.instant('nav.order')
       },
       {
         label: this.translate.instant('nav.contact'),

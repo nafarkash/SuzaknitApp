@@ -88,13 +88,11 @@ import { ImageUploaderComponent } from './admin-tools/image-uploader/image-uploa
           {
             path: ':videoUrl',
             component: InstructionVideoComponent,
-            //outlet: 'videoUrl'
           }
         ]
       },
       { path: 'gallery/:category', component: GalleryViewerComponent },
-      { path: 'admin', component: AdminToolsComponent },
-      { path: 'translation', component: TranslationManagerComponent }
+      { path: 'admin', component: AdminToolsComponent }
     ])
   ],
   providers: [
