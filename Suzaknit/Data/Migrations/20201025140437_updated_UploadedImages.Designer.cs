@@ -22,7 +22,7 @@ namespace Suzaknit.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("SERIAL");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BYTEA");
