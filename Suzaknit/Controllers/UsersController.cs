@@ -1,34 +1,32 @@
-﻿using Suzaknit.Data;
-using Suzaknit.Entities;
+﻿using Suzaknit.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using Suzaknit.Interfaces;
 
 namespace Suzaknit.Controllers
 {
     public class UsersController : BaseController
     {
-        private readonly DataContext _context;
+        private readonly IUnitOfWork _suzUOW;
 
-        public UsersController(DataContext context)
+        public UsersController(IUnitOfWork suzUOW)
         {
-            _context = context;
+            _suzUOW = suzUOW;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public ActionResult<IEnumerable<AppUser>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return Ok(_suzUOW.AppUserRepository.Get());
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<AppUser>> GetUser(int id)
+        public ActionResult<AppUser> GetUser(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return Ok(_suzUOW.AppUserRepository.GetByID(id));
         }
     }
 }

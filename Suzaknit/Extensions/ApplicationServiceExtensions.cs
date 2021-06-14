@@ -4,6 +4,7 @@ using Suzaknit.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Suzaknit.Data.Repositories;
 
 namespace Suzaknit.Extensions
 {
@@ -16,6 +17,7 @@ namespace Suzaknit.Extensions
                 options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUnitOfWork, SuzaknitUOW>();
 
             return services;
         }

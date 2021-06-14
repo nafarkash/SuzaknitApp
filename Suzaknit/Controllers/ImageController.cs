@@ -1,11 +1,9 @@
-﻿using Suzaknit.Data;
-using Suzaknit.Entities;
+﻿using Suzaknit.Entities;
 using Suzaknit.Enums;
 using Suzaknit.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
@@ -13,19 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Suzaknit.Interfaces;
 
 namespace Suzaknit.Controllers
 {
     public class ImageController : BaseController
     {
         private const string UPLOADS_FOLDER = "uploads";
-        private readonly DataContext _context;
+        private readonly IUnitOfWork _suzUOW;
         private readonly IWebHostEnvironment _env;
         private readonly string _uploadsFolderPath;
 
-        public ImageController(DataContext context, IWebHostEnvironment env)
+        public ImageController(IUnitOfWork suzUOW, IWebHostEnvironment env)
         {
-            _context = context;
+            _suzUOW = suzUOW;
             _env = env;
 
             // Validate existing uploads folder
@@ -68,8 +67,8 @@ namespace Suzaknit.Controllers
                     // DB successfully updated, can save image to file system
                     await file.CopyToAsync(new FileStream(filePath, FileMode.Create));
                 }
-                await _context.Images.AddRangeAsync(uploadedImages);
-                await _context.SaveChangesAsync();
+                _suzUOW.ImageRepository.InsertRange(uploadedImages);
+                await _suzUOW.SaveChangesAsync();
                 return CreatedAtAction(nameof(GetCategory), uploadedImages);
             }
             catch (Exception ex)
@@ -80,13 +79,13 @@ namespace Suzaknit.Controllers
         }
 
         [HttpGet("{category}")]
-        public async Task<ActionResult<IEnumerable<UploadedImages>>> GetCategory([Required] string category)
+        public ActionResult<IEnumerable<UploadedImages>> GetCategory([Required] string category)
         {
             try
             {
-                var retValue = await _context.Images.ToListAsync();
-                var filteted = retValue.Where(image => image.Category.ToDescriptionString() == category);
-                return Ok(filteted.ToList());
+                var retValue = _suzUOW.ImageRepository.Get(image => image.Category.ToDescriptionString() == category);
+                //var filteted = retValue.Where(image => image.Category.ToDescriptionString() == category);
+                return Ok(retValue.ToList());
             }
             catch (Exception ex)
             {

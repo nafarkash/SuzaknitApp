@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Suzaknit.Data;
 using Suzaknit.DTO;
 using Suzaknit.Entities;
+using Suzaknit.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,11 +10,11 @@ namespace Suzaknit.Controllers
 {
     public class MetadataController : BaseController
     {
-        private readonly DataContext _context;
+        private readonly IUnitOfWork _suzUOW;
 
-        public MetadataController(DataContext context)
+        public MetadataController(IUnitOfWork suzUOW)
         {
-            _context = context;
+            _suzUOW = suzUOW;
         }
 
         [HttpPost("instruction")]
@@ -28,8 +27,8 @@ namespace Suzaknit.Controllers
                 {
                     instructions.Add(ConvertModelRecursively(instruction));
                 }
-                await _context.Instructions.AddRangeAsync(instructions);
-                await _context.SaveChangesAsync();
+                _suzUOW.InstructionRepository.InsertRange(instructions);
+                await _suzUOW.SaveChangesAsync();
                 return CreatedAtAction(nameof(GetMetadata), instructions);
             }
             catch (Exception ex)
@@ -40,11 +39,11 @@ namespace Suzaknit.Controllers
         }
 
         [HttpGet("{metadata}")]
-        public async Task<ActionResult<IEnumerable<InstructionMetadata>>> GetMetadata(string metdata)
+        public ActionResult<IEnumerable<InstructionMetadata>> GetMetadata(string metdata)
         {
             try
             {
-                return await _context.Instructions.ToListAsync();
+                return Ok(_suzUOW.InstructionRepository.Get());
             }
             catch (Exception ex)
             {
