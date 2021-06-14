@@ -83,8 +83,8 @@ namespace Suzaknit.Controllers
         {
             try
             {
-                var retValue = _suzUOW.ImageRepository.Get(image => image.Category.ToDescriptionString() == category);
-                //var filteted = retValue.Where(image => image.Category.ToDescriptionString() == category);
+                var retValue = _suzUOW.ImageRepository.Get();
+                var filteted = retValue.Where(image => image.Category.ToDescriptionString() == category);
                 return Ok(retValue.ToList());
             }
             catch (Exception ex)
