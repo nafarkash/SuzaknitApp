@@ -23,10 +23,10 @@ namespace Suzaknit.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<byte[]>("PasswordHash")
-                        .HasColumnType("BLOB");
+                        .HasColumnType("BYTEA");
 
                     b.Property<byte[]>("PasswordSalt")
-                        .HasColumnType("BLOB");
+                        .HasColumnType("BYTEA");
 
                     b.Property<string>("UserName")
                         .HasColumnType("TEXT");
